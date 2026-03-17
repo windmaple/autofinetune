@@ -1,0 +1,20 @@
+commit	accuracy	status	description
+baseline	0.8772	keep	baseline run with rank=8, alpha=16, lr=1e-4, adamw
+ec9d5a6	0.8887	keep	increase LORA_RANK to 16, LORA_ALPHA to 32
+d1599cb	0.8939	keep	use muon optimizer instead of adamw
+20a5908	0.8907	discard	increase LEARNING_RATE to 2e-4
+9a11e31	0.8980	keep	increase LORA_RANK to 32, LORA_ALPHA to 64
+4b1bcdf	0.8939	discard	increase LORA_RANK to 64, LORA_ALPHA to 128
+95352f7	0.8980	discard	add o_einsum to LoRA modules
+6b8996c	0.8907	discard	decrease LEARNING_RATE to 5e-5
+97227db	0.8855	discard	change SEED to 123
+c3ce543	0.8887	discard	change BATCH_SIZE to 4
+b2f0733	0.8949	discard	use warmup_cosine_decay_schedule
+4d8bd35	0.8959	discard	add weight_decay=0.01 to muon
+342c7d1	0.8398	discard	use lion optimizer
+3e85dd9	0.8783	discard	add adaptive=True to muon optimizer
+06b7c2d	0.9011	keep	change LORA_ALPHA to 32 (1:1 scaling)
+06c3990	0.8730	discard	change lora_a_initializer to normal(0.01)
+161ccb6	0.8991	discard	change lora_a_initializer to glorot_uniform
+445cee1	0.8855	discard	change lora_a_initializer to orthogonal
+4d6f72c	0.8949	discard	change lora_a_initializer to he_normal
