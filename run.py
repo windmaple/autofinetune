@@ -83,7 +83,7 @@ def extract_function_call(model_output):
 print("Downloading model and dataset...")
 local_model_path = snapshot_download(repo_id=MODEL_ID, ignore_patterns=["*.pth"])
 data_file = hf_hub_download(repo_id=DATASET_ID, filename="dataset.jsonl", repo_type="dataset")
-dataset = load_dataset("text", data_files=data_file, encoding="utf-8")["train"].shuffle(seed=42)
+dataset = load_dataset("text", data_files=data_file, encoding="utf-8")["train"].shuffle(seed=SEED)
 
 train_data = dataset.filter(lambda x: json.loads(x['text'])['metadata'] == 'train')
 full_eval = dataset.filter(lambda x: json.loads(x['text'])['metadata'] == 'eval')
