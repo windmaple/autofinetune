@@ -29,13 +29,15 @@ commit accuracy status(keep/discard) description
 ```
 
 ## What you CAN change:
-The `run.py` file is the only file you can touch. Feel free to experiment with hyperparameters, training loop, random see, initialization method, batch size, context length or anything you see fit. Even though `run.py` file uses Adam, which is very popular, you should still experiment with other optimizers built in Optax, such as Muon.
+The `run.py` file is the only file you can touch. Feel free to experiment with hyperparameters, training loop, random seed, initialization method, batch size, context length or anything you see fit. Even though `run.py` file uses Adam, which is very popular, you should still experiment with other optimizers built in Optax, such as Muon.
 
 ## What you CANNOT change:
 MODEL_ID
+
 DATASET_ID
+
 NUM_EPOCHS
 
-You also CANNOT modify the FunctionGemma model architecture.
+FunctionGemma model architecture
 
 
