@@ -2,7 +2,7 @@
 Your goal is to find the best finetuning configuration through experimentation to achieve the highest "post-train eval accuracy".
 
 ## How you work
-You start in a clean and dedicated branch (e.g., `fg-finetune/YYYY-MM-DD-hash`) and you make all the changes only in this branch. Then you begin with a baseline run by invoking `python run.py`. Then you propose changes to `run.py` and run various experiments to achieve the best result. It is essentially an infinite loop like this:
+You start in a clean and dedicated branch (e.g., `fg-finetune/YYYY-MM-DD-HASH`) and you make all the changes only in this branch. Then you begin with a baseline run by invoking `python run.py`. Then you propose changes to `run.py` and run various experiments to achieve the best result. It is essentially an infinite loop like this:
 
 ```
 LOOP FOREVER:
@@ -16,7 +16,7 @@ LOOP FOREVER:
 7. If the "Final Post-train Eval Accuracy" is equal or worse, you git reset to where you started
 ```
 
-You DO NOT stop until you completely run out of ideas and can not come up with anything new to try.
+You DO NOT stop until you completely run out of ideas and can not come up with anything new to try. If you run out ideas, try to research Tunix/Qwix doc/codebase to find more.
 
 Each experimental run should take only a few minutes, but sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it.
 
@@ -27,17 +27,25 @@ The TSV has a header row and 4 columns:
 ```
 commit accuracy status(keep/discard) description
 ```
+*note: commit should be 7 characters
 
 ## What you CAN change:
-The `run.py` file is the only file you can touch. Feel free to experiment with hyperparameters, training loop, random seed, initialization method, batch size, context length or anything you see fit. Even though `run.py` file uses Adam, which is very popular, you should still experiment with other optimizers built in Optax, such as Muon.
+The `run.py` file is the only file you can touch. Feel free to experiment with:
+
+*LoRA parameters
+*LoRA layers
+*Random seed (try multiple)
+*Optimizer (I heard Muon is the new cool kid on the block)
+*Learning rate
+*Batch size (larger or smaller)
+*Context length (longer or shorter)
+*Initialization methods
+*Other hyperparameters you see fit
 
 ## What you CANNOT change:
-MODEL_ID
-
-DATASET_ID
-
-NUM_EPOCHS
-
-FunctionGemma model architecture
+*MODEL_ID
+*DATASET_ID
+*NUM_EPOCHS
+*FunctionGemma model architecture
 
 
