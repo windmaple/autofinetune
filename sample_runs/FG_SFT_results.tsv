@@ -1,0 +1,21 @@
+commit	accuracy	status	description
+20d724e	0.8658	keep	baseline
+eaec5d5	0.8699	keep	Increase LoRA rank to 16 and alpha to 32
+9281e34	0.8835	keep	Add attn_vec_einsum to LoRA modules
+ad5e4dd	0.8762	discard	Use Muon optimizer
+e68be89	0.8814	discard	Increase LoRA rank to 32 and alpha to 64
+5359cd3	0.0000	discard	Increase batch size to 16
+d04b20b	0.8876	keep	Increase learning rate to 2e-4
+04947f2	0.8751	discard	Increase learning rate to 3e-4
+5d22d6f	0.8887	keep	Change random seed to 42
+9f7275f	0.0000	discard	Add dropout 0.05 to LoRA
+aa34976	0.0000	discard	Increase max length to 2048
+4b1eb90	0.8772	discard	Increase LoRA rank to 24 and alpha to 48
+bb14b1d	0.8876	discard	Change LORA_ALPHA to 16
+7f64a5d	0.8772	discard	Change random seed to 1234
+0db63e4	0.8897	keep	Change learning rate to 2.5e-4
+74b11b7	0.8803	discard	Increase LORA_ALPHA to 64
+b0ce095	0.6337	discard	Decrease MAX_LENGTH to 512, increase BATCH_SIZE to 16
+d474107	0.8762	discard	Change learning rate to 2.7e-4
+64ad558	0.8907	keep	Change BATCH_SIZE to 4
+59a860a	0.8907	discard	Change learning rate to 2.0e-4 with BS 4
