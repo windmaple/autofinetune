@@ -28,7 +28,8 @@ When an experiment is done, log the result to `results.tsv` (tab-separated, NOT 
 The TSV has a header row and 6 columns:
 ```
 commit Post_RL_total_accuracy numerical_accuracy format_accuracy status(keep/discard) description
-Note: commit is 7 characters```
+```
+Note: commit is 7 characters
 
 
 ## What you CAN change:
