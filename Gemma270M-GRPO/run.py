@@ -301,9 +301,6 @@ dataset_lengths = (
 )
 print(f"dataset contains {dataset_lengths} of batches")
 
-for ele in train_dataset[:1]:
-  pprint(ele)
-
 ignore_patterns = [
     "*.pth",  # Ignore PyTorch .pth weight files
 ]
