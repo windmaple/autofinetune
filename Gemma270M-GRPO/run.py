@@ -12,8 +12,9 @@ from pprint import pprint
 import re, os
 import sys
 import random
-
+import numpy as np
 SEED = 42
+np.random.seed(SEED)
 random.seed(SEED)
 
 import csv
@@ -27,8 +28,7 @@ from huggingface_hub import snapshot_download
 import jax
 import jax.numpy as jnp
 import kagglehub
-import numpy as np
-np.random.seed(SEED)
+
 import optax
 from orbax import checkpoint as ocp
 from pathlib import Path
@@ -45,6 +45,15 @@ from tunix.rl.rollout import base_rollout
 from tunix.sft import metrics_logger
 import wandb
 import os
+
+# metrax (tunix internal) logs JAX I/O monitoring events at step=0, which
+# conflicts with the training step counter. Suppress the resulting wandb
+# step-monotonicity warnings since they are harmless false positives.
+_orig_termwarn = wandb.termwarn
+wandb.termwarn = lambda s, *a, **kw: (
+    None if "less than the current step" in s else _orig_termwarn(s, *a, **kw)
+)
+
 # XLA cache
 jax.config.update("jax_compilation_cache_dir", "/tmp/jax_cache")
 
