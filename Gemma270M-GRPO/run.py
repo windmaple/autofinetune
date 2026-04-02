@@ -54,10 +54,6 @@ wandb.termwarn = lambda s, *a, **kw: (
     None if "less than the current step" in s else _orig_termwarn(s, *a, **kw)
 )
 
-# Suppress XLA/PJRT C++ version-compatibility warnings (harmless).
-os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
-os.environ.setdefault("GLOG_minloglevel", "2")
-
 # XLA cache
 jax.config.update("jax_compilation_cache_dir", "/tmp/jax_cache")
 
