@@ -34,16 +34,7 @@ from tunix.rl import rl_cluster as rl_cluster_lib
 from tunix.rl.grpo.grpo_learner import GRPOConfig, GRPOLearner
 from tunix.rl.rollout import base_rollout
 from tunix.sft import metrics_logger
-import wandb
 import os
-
-# metrax (tunix internal) logs JAX I/O monitoring events at step=0, which
-# conflicts with the training step counter. Suppress the resulting wandb
-# step-monotonicity warnings since they are harmless false positives.
-_orig_termwarn = wandb.termwarn
-wandb.termwarn = lambda s, *a, **kw: (
-    None if "less than the current step" in s else _orig_termwarn(s, *a, **kw)
-)
 
 # XLA cache
 jax.config.update("jax_compilation_cache_dir", "/tmp/jax_cache")
@@ -703,7 +694,6 @@ grpo_trainer = GRPOLearner(
 )
 
 grpo_trainer.train(train_dataset, val_dataset)
-wandb.init()
 
 # Load checkpoint first.
 
