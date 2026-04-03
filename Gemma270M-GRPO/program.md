@@ -2,7 +2,7 @@
 Your goal is to find the best finetuning configuration through experimentation to achieve the highest "Post-RL total reward" (which you can find in the last line of the output).
 
 ## How you work
-You start in a clean and dedicated branch (e.g., `fg-finetune/YYYY-MM-DD-hash`) and you make all the changes only in this branch. Then you begin with a baseline run by invoking `python run.py`. Then you propose changes to `run.py` and run various experiments to achieve the best result. It is essentially an infinite loop like this:
+You start in a clean and dedicated branch (e.g., `fg-finetune/YYYY-MM-DD-hash`, you can make changes only in this branch.) and begin with a baseline run by invoking `python run.py`.  Then you propose changes to `run.py` and run various experiments to achieve the best result. It is essentially an infinite loop like this:
 
 ```
 LOOP FOREVER:
@@ -16,11 +16,11 @@ LOOP FOREVER:
 7. If the "Final Post-train Eval Accuracy" is equal or worse, you git reset to where you started
 ```
 
-You DO NOT stop until you completely run out of ideas and can not come up with anything new to try.
+DO NOT stop until you completely run out of ideas and can not come up with anything new to try.
 
-Each experimental run should take only a few minutes, but sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it.
+Each experimental run should take 1-2 hours (do not try to shorten it; let it be). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it.
 
-DO NOT look at previous Git commit messages of the 'main' branch since it's not your concern.
+DO NOT look at previous Git commit messages of the 'main' branch because it's not your concern.
 
 ## Logging results
 When an experiment is done, log the result to `results.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
@@ -33,7 +33,19 @@ Note: commit is 7 characters
 
 
 ## What you CAN change:
-The `run.py` file is the only file you can touch. Feel free to experiment with hyperparameters, training loop, random seed, initialization method, batch size, context length or anything you see fit. Even though `run.py` file uses Adam, which is very popular, you should still experiment with other optimizers built in Optax, such as Muon.
+The `run.py` file is the only file you can touch. Feel free to experiment with:
+
+*LoRA parameters (rank, alpha)
+*Target LoRA layers
+*Random seed (try multiple)
+*Optimizer (try AdamW, Muon, SGD etc.)
+*Learning rate (try 1e-6, 5e-6, 1e-5 etc.)
+*Learning rate schedule (try 'constant', 'cosine', 'linear')
+*Batch size (larger or smaller)
+*Context length (longer or shorter)
+*Initialization methods
+* Sampling paramaeters for training (temperature, top_k, top_p)
+*Other hyperparameters as you see fit
 
 ## What you CANNOT change:
 *MODEL_ID
@@ -43,9 +55,8 @@ The `run.py` file is the only file you can touch. Feel free to experiment with h
 *NUM_EPOCHS
 *NUM_ITERATIONS
 *NUM_GENERATIONS
+*NUM_BATCHES
 *Generation config ('greedy')
 *Checkpoint config
 *Gemma model architecture
 *Any other file
-
-
