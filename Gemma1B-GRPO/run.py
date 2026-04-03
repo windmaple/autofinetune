@@ -35,6 +35,7 @@ from tunix.rl.grpo.grpo_learner import GRPOConfig, GRPOLearner
 from tunix.rl.rollout import base_rollout
 from tunix.sft import metrics_logger
 import os
+os.environ["WANDB_MODE"] = "disabled"
 
 # XLA cache
 jax.config.update("jax_compilation_cache_dir", "/tmp/jax_cache")
