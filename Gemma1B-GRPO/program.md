@@ -18,7 +18,7 @@ LOOP FOREVER:
 
 DO NOT stop until you completely run out of ideas and can not come up with anything new to try.
 
-Each experimental run should take 1-2 hours (do not try to shorten it; let it be). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it.
+Each experimental run should take 2-3 hours (do not try to shorten it; let it be). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it.
 
 DO NOT look at previous Git commit messages of the 'main' branch because it's not your concern.
 
