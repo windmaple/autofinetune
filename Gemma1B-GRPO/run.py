@@ -49,7 +49,7 @@ wandb.termwarn = lambda s, *a, **kw: (
 jax.config.update("jax_compilation_cache_dir", "/tmp/jax_cache")
 
 # ====== Model ======
-MODEL_ID = "google/gemma-3-270m-it"
+MODEL_ID = "google/gemma-3-1b-it"
 GEMMA_TOKENIZER_PATH = "gs://gemma-data/tokenizers/tokenizer_gemma3.model"
 
 # ====== Data ======
