@@ -707,9 +707,11 @@ wandb.init()
 
 # Load checkpoint first.
 
-trained_ckpt_path = os.path.join(
-    CKPT_DIR, "actor", str(MAX_STEPS), "model_params"
-)
+actor_ckpt_dir = os.path.join(CKPT_DIR, "actor")
+all_steps = [int(d) for d in os.listdir(actor_ckpt_dir) if d.isdigit()]
+latest_step = max(all_steps)
+trained_ckpt_path = os.path.join(actor_ckpt_dir, str(latest_step), "model_params")
+print(f"Loading checkpoint from: {trained_ckpt_path}")
 
 abs_params = jax.tree.map(
     lambda x: jax.ShapeDtypeStruct(x.shape, x.dtype),
