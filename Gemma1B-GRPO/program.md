@@ -2,7 +2,7 @@
 Your goal is to find the best finetuning configuration through experimentation to achieve the highest "Post-RL total reward" (which you can find in the last line of the output).
 
 ## How you work
-You start in a clean and dedicated branch (e.g., `fg-finetune/YYYY-MM-DD-hash`, you can make changes only in this branch.) and begin with a baseline run by invoking `python run.py`.  Then you propose changes to `run.py` and run various experiments to achieve the best result. It is essentially an infinite loop like this:
+You start in a clean and dedicated branch (e.g., `rl-finetune/YYYY-MM-DD-hash`, you can make changes only in this branch.) and begin with a baseline run by invoking `python run.py`.  Then you propose changes to `run.py` and run various experiments to achieve the best result. It is essentially an infinite loop like this:
 
 ```
 LOOP FOREVER:
@@ -16,11 +16,8 @@ LOOP FOREVER:
 7. If the "Final Post-train Eval Accuracy" is equal or worse, you git reset to where you started
 ```
 
-DO NOT stop until you completely run out of ideas and can not come up with anything new to try.
+Each experimental run should take 2-3 hours (do not try to shorten it; let it run. You have as much time as needed.). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it. You MUST run at least 50 experiments.
 
-Each experimental run should take 2-3 hours (do not try to shorten it; let it be). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it.
-
-DO NOT look at previous Git commit messages of the 'main' branch because it's not your concern.
 
 ## Logging results
 When an experiment is done, log the result to `results.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
@@ -33,7 +30,7 @@ Note: commit is 7 characters
 
 
 ## What you CAN change:
-The `run.py` file is the only file you can touch. Feel free to experiment with:
+The `run.py` file is the only file you can touch. Make sure to experiment with extensive combinations of all these hyperparameters:
 
 *LoRA parameters (rank, alpha)
 *Target LoRA layers
@@ -60,3 +57,9 @@ The `run.py` file is the only file you can touch. Feel free to experiment with:
 *Checkpoint config
 *Gemma model architecture
 *Any other file
+
+## Additional things that you should NOT do:
+*DO NOT edit any file in the 'main' branch
+*DO NOT look at previous Git commit messages of the 'main' branch because it's not your concern.
+*DO NOT try to use wandb or TensorBoard to monitor training progress. They are useless for our purpose.
+*DO NOT create any new file to orchestrate the processs. If it takes a long time to run, then take your time. You have a lot of patience!
