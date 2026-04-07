@@ -61,5 +61,5 @@ The `run.py` file is the only file you can touch. Make sure to experiment with e
 ## Additional things that you should NOT do:
 *DO NOT edit any file in the 'main' branch
 *DO NOT look at previous Git commit messages of the 'main' branch because it's not your concern.
-*DO NOT try to use wandb or TensorBoard to monitor training progress. They are useless for our purpose.
+*DO NOT try to install or use wandb or TensorBoard to monitor training progress. They are useless for our purpose.
 *DO NOT create any new file to orchestrate the processs. If it takes a long time to run, then take your time. You have a lot of patience!
