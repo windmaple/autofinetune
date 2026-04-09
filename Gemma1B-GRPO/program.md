@@ -41,7 +41,7 @@ The `run.py` file is the only file you can touch. Make sure to experiment with e
 *Batch size (larger or smaller)
 *Context length (longer or shorter)
 *Initialization methods
-* Sampling paramaeters for training (temperature, top_k, top_p)
+*Sampling paramaeters for training (temperature, top_k, top_p)
 *Other hyperparameters as you see fit
 
 ## What you CANNOT change:
