@@ -16,7 +16,7 @@ LOOP FOREVER:
 7. If the "Final Post-train Eval Accuracy" is equal or worse, you git reset to where you started
 ```
 
-Each experimental run should take 2-3 hours (do not try to shorten it; just let it run. You have as much time as needed, so set your timeout to 200 minutes). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it. You MUST run at least 50 experiments.
+Each experimental run takes < 2-3 hours (do not try to shorten it; just let it run. You have as much time as needed, so set your timeout to 200 minutes.). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it. You MUST run at least 50 experiments.
 
 
 ## Logging results
@@ -41,26 +41,21 @@ The `run.py` file is the only file you can touch. Make sure to experiment with e
 *Batch size (larger or smaller)
 *Context length (longer or shorter)
 *Initialization methods
-*Sampling paramaeters for training (temperature, top_k, top_p)
+* Sampling paramaeters for training (temperature, top_k, top_p)
 *Other hyperparameters as you see fit
 
 ## What you CANNOT change:
-*MODEL_ID
 *dataset(GSM8K)
-*TRAIN_FRACTION
 *Any reward or score function
-*NUM_EPOCHS
-*NUM_ITERATIONS
-*NUM_GENERATIONS
-*NUM_BATCHES
 *Generation config ('greedy')
 *Checkpoint config
 *Gemma model architecture
-*Any other file
+*Any other file (for example, program.md, or prepare.py)
 
 ## Additional things that you should NOT do:
 *DO NOT edit any file in the 'main' branch
 *DO NOT look at previous Git commit messages of the 'main' branch because it's not your concern.
 *DO NOT try to install or use wandb or TensorBoard to monitor training progress. They are useless for our purpose.
 *DO NOT create any new file to orchestrate the processs. If it takes a long time to run, then take your time. You have a lot of patience!
-*DO NOT use any subagent
+*DO NOT try to override the constants in run.py. Those are off limits to change
+*DO NOT use any subagent or any background orchestrator. You are the orchestrator!

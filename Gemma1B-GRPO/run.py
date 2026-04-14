@@ -1,3 +1,4 @@
+from constants import MODEL_ID, GEMMA_TOKENIZER_PATH, TRAIN_FRACTION, NUM_EPOCHS, NUM_ITERATIONS, NUM_GENERATIONS, NUM_BATCHES
 import functools
 from pprint import pprint
 import re, os
@@ -40,14 +41,9 @@ os.environ["WANDB_MODE"] = "disabled"
 # XLA cache
 jax.config.update("jax_compilation_cache_dir", "/tmp/jax_cache")
 
-# ====== Model ======
-MODEL_ID = "google/gemma-3-1b-it"
-GEMMA_TOKENIZER_PATH = "gs://gemma-data/tokenizers/tokenizer_gemma3.model"
-
 # ====== Data ======
 TRAIN_DATA_DIR = "./data/train"
 TEST_DATA_DIR = "./data/test"
-TRAIN_FRACTION = .9
 
 # ====== LoRA ======
 RANK = 64
@@ -77,14 +73,8 @@ TOTAL_GENERATION_STEPS = 768
 TEMPERATURE = 0.9
 TOP_P = 1.0
 TOP_K = 50
-# The number of times the policy generates multiple responses for a given prompt
-# within a single training step. This corresponds to `G` in Algorithm 1 in the
-# paper. The "group" in GRPO comes from here.
-NUM_GENERATIONS = 2
 
 # === other GRPO configs ===
-# The number of iterations per batch (𝜇 in GRPO algo 1).
-NUM_ITERATIONS = 1
 # The coefficient for the KL divergence penalty (𝛽) in the GRPO loss function.
 # Important to keep a high enough value for this, otherwise, the KL divergence
 # can increase unchecked.
@@ -95,14 +85,11 @@ EPSILON = 0.2
 
 # ====== Training ======
 TRAIN_MICRO_BATCH_SIZE = 4
-# Increase `NUM_BATCHES` and `MAX_STEPS` for better results.
-NUM_BATCHES = 3738
 # Keep `NUM_TEST_BATCHES` low so that evaluation runs quickly. It can be
 # increased to a max. of 330 (if batch size is 4).
 NUM_TEST_BATCHES = 64
 
 EVAL_EVERY_N_STEPS = 64  # this doesn't matter if `TRAIN_FRACTION = 1.0`.
-NUM_EPOCHS = 1  # can potentially train for more epochs
 
 # Number of training steps.
 MAX_STEPS = int(NUM_BATCHES * NUM_ITERATIONS * TRAIN_FRACTION * NUM_EPOCHS)
