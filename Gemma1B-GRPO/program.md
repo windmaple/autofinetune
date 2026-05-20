@@ -1,5 +1,5 @@
 ## Goal
-Your goal is to find the best finetuning configuration through experimentation to achieve the highest "Post-RL total reward" (which you can find in the last line of the output).
+Your goal is to find the best finetuning configuration through experimentation to achieve the highest "Post-RL total reward" (which you can find in the last line of the output by grepping '^Post-RL total reward:').
 
 ## How you work
 You start in a clean and dedicated branch (e.g., `rl-finetune/YYYY-MM-DD-hash`, you can make changes only in this branch.) and begin with a baseline run by invoking `python run.py`.  Then you propose changes to `run.py` and run various experiments to achieve the best result. It is essentially an infinite loop like this:
@@ -12,11 +12,11 @@ LOOP FOREVER:
 3. git commit
 4. Run the experiment: `python run`
 5. Record the result in `results.tsv` (see below). But do not commit `result.tsv`
-6. If the "Final Post-train Eval Accuracy" improves after finetuning, you "advance" the branch, keeping the git commit
-7. If the "Final Post-train Eval Accuracy" is equal or worse, you git reset to where you started
+6. If the "Post-RL total reward" improves after finetuning, you "advance" the branch, keeping the git commit
+7. If the "Post-RL total reward" is equal or worse, you git reset to where you started
 ```
 
-Each experimental run takes < 2-3 hours (do not try to shorten it; just let it run. You have as much time as needed, so set your timeout to 200 minutes.). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it. You MUST run at least 50 experiments.
+Each experimental run may take many hours (do not try to shorten it; just let it run. You have as much time as needed, so set your timeout to 300 minutes). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it. You MUST run at least 50 experiments.
 
 
 ## Logging results
@@ -24,7 +24,7 @@ When an experiment is done, log the result to `results.tsv` (tab-separated, NOT 
 
 The TSV has a header row and 6 columns:
 ```
-commit Post_RL_total_accuracy numerical_accuracy format_accuracy status(keep/discard) description
+commit Post_RL_total_reward numerical_reward format_reward status(keep/discard) description
 ```
 Note: commit is 7 characters
 
