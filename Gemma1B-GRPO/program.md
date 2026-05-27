@@ -16,7 +16,7 @@ LOOP FOREVER:
 7. If the "Post-RL total reward" is equal or worse, you git reset to where you started
 ```
 
-Each experimental run may take many hours (do not try to shorten it; just let it run. You have as much time as needed, so set your timeout to 300 minutes). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it. You MUST run at least 50 experiments.
+Each experimental run may take 5 hours (do not try to shorten it; just let it run. You have as much time as needed, so set your timeout to 300 minutes). Sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it. You MUST run at least 50 experiments.
 
 
 ## Logging results
