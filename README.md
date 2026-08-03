@@ -15,4 +15,4 @@ Fun experiment to apply [autoresearch](https://github.com/karpathy/autoresearch)
 ### How to run
 1. Apply this [workaround](https://gist.github.com/windmaple/a84d140d556d3f09589bd7a5353ad3f3) first, since Antigravity CLI currently crashes on TPU VMs.
 
-2. Switch to one of the 2 folders, start AGY CLI (Gemini 3.6 Flash high) and then do `@program.md`.
+2. Switch to one of the 2 folders, start AGY CLI (Gemini 3.6 Flash high) and then do `@program.md`. You might want to enable the '--dangerously-skip-permissions' flag.
