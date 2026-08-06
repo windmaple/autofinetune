@@ -16,12 +16,10 @@ LOOP FOREVER:
 7. If the "Final Post-train Eval Accuracy" is equal or worse, you git reset to where you started
 ```
 
-You DO NOT stop until you completely run out of ideas and can not come up with anything new to try. If you run out ideas, try to research Tunix/Qwix doc/codebase to find more.
-
 Each experimental run should take only a few minutes, but sometimes it crashes due to various reasons. Try some quick fixes if it does, and move on if you cannot fix it.
 
 ## Logging results
-When an experiment is done, log the result to `results.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
+When an experiment is done, concat the result to `results.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
 
 The TSV has a header row and 4 columns:
 ```
@@ -39,6 +37,7 @@ The `run.py` file is the only file you can touch. Feel free to experiment with:
 *Learning rate
 *Batch size (larger or smaller)
 *Context length (longer or shorter)
+*Data shuffling
 *Initialization methods
 *Other hyperparameters you see fit
 

@@ -1,21 +1,22 @@
-commit	accuracy	status	description
-20d724e	0.8658	keep	baseline
-eaec5d5	0.8699	keep	Increase LoRA rank to 16 and alpha to 32
-9281e34	0.8835	keep	Add attn_vec_einsum to LoRA modules
-ad5e4dd	0.8762	discard	Use Muon optimizer
-e68be89	0.8814	discard	Increase LoRA rank to 32 and alpha to 64
-5359cd3	0.0000	discard	Increase batch size to 16
-d04b20b	0.8876	keep	Increase learning rate to 2e-4
-04947f2	0.8751	discard	Increase learning rate to 3e-4
-5d22d6f	0.8887	keep	Change random seed to 42
-9f7275f	0.0000	discard	Add dropout 0.05 to LoRA
-aa34976	0.0000	discard	Increase max length to 2048
-4b1eb90	0.8772	discard	Increase LoRA rank to 24 and alpha to 48
-bb14b1d	0.8876	discard	Change LORA_ALPHA to 16
-7f64a5d	0.8772	discard	Change random seed to 1234
-0db63e4	0.8897	keep	Change learning rate to 2.5e-4
-74b11b7	0.8803	discard	Increase LORA_ALPHA to 64
-b0ce095	0.6337	discard	Decrease MAX_LENGTH to 512, increase BATCH_SIZE to 16
-d474107	0.8762	discard	Change learning rate to 2.7e-4
-64ad558	0.8907	keep	Change BATCH_SIZE to 4
-59a860a	0.8907	discard	Change learning rate to 2.0e-4 with BS 4
+commit	accuracy	status(keep/discard)	description
+56c297c	86.58%	keep	baseline run with wandb fix
+30e5749	88.35%	keep	add attn_vec_einsum to lora, rank=16, alpha=32
+ee8c234	88.66%	keep	lr=2e-4 with 50-step warmup cosine decay
+e8d02c5	88.55%	discard	lora_rank=32, lora_alpha=64
+b077ed6	89.07%	keep	adamw b2=0.98, weight_decay=0.01
+7dbe38e	88.76%	discard	lr=3e-4, 100-step warmup, weight_decay=0.02
+fbef3a0	89.28%	keep	add optax.clip_by_global_norm(1.0)
+0161834	88.55%	discard	lora_rank=24, lora_alpha=48
+fa835ad	89.18%	discard	seed=42
+5bb3d7e	89.39%	keep	lr=2.5e-4, clip_by_global_norm(0.5)
+d26ddcc	88.76%	discard	lora_alpha=48
+a53293c	89.49%	keep	batch_size=4, lr=1.8e-4, warmup_steps=100
+b9cd211	90.32%	keep	lr=2e-4, warmup_steps=120, weight_decay=0.015
+75bbe7f	90.32%	discard	warmup_steps=150, weight_decay=0.02
+88d8f6e	90.01%	discard	cosine decay end_value=2e-5
+e1b5a71	89.28%	discard	adamw b2=0.95
+6c581b1	89.49%	discard	lr=2.1e-4
+36428cf	89.39%	discard	weight_decay=0.012
+c7f683f	89.49%	discard	use optax.nadamw
+39ce791	90.01%	discard	clip_by_global_norm(0.3)
+16dfcff	88.97%	discard	batch_size=2, lr=1.5e-4, warmup_steps=200
