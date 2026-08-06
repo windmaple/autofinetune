@@ -4,7 +4,7 @@ Fun experiment to apply [autoresearch](https://github.com/karpathy/autoresearch)
 
 ![fullstack](Google_stack.png)
 
-1. [Tunix finetuning FunctionGemma](https://developers.googleblog.com/easy-functiongemma-finetuning-with-tunix-on-google-tpus/) - 50 experiments, TPU v5e-1, a few hours
+1. [Tunix finetuning FunctionGemma](https://developers.googleblog.com/easy-functiongemma-finetuning-with-tunix-on-google-tpus/) - 20 experiments, TPU v5e-1, a couple of hours
 
 ![SFT](sample_runs/SFT_results.png)
 
@@ -15,4 +15,6 @@ Fun experiment to apply [autoresearch](https://github.com/karpathy/autoresearch)
 ### How to run
 1. Apply this [workaround](https://gist.github.com/windmaple/a84d140d556d3f09589bd7a5353ad3f3) first, since Antigravity CLI currently crashes on TPU VMs.
 
-2. Switch to one of the 2 folders, start AGY CLI (Gemini 3.6 Flash high) and then do `@program.md`. You might want to enable the '--dangerously-skip-permissions' flag.
+2. pip install google-tunix[prod]
+
+3. Switch to one of the 2 sub-folders (SFT or RL), start AGY CLI (Gemini 3.6 Flash high) and then do `@program.md`. You might want to enable the '--dangerously-skip-permissions' flag so that you don't need to accept permissions all the time.
