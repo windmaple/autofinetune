@@ -4,6 +4,8 @@ Fun experiment to apply [autoresearch](https://github.com/karpathy/autoresearch)
 
 ![fullstack](Google_stack.png)
 
+### Case studeis:
+
 1. [Tunix finetuning FunctionGemma](https://developers.googleblog.com/easy-functiongemma-finetuning-with-tunix-on-google-tpus/) - 20 experiments, TPU v5e-1, a couple of hours
 
 ![SFT](sample_runs/SFT_results.png)
